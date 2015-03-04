@@ -11,7 +11,7 @@ class Api::V1::CandidatesController < ApplicationController
   end
 
   def create
-    @candidate = Candidate.new(food_params)
+    @candidate = Candidate.new(candidate_params)
 
     if @candidate.save
       render json: @candidate
