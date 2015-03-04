@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'create/index'
   namespace :api do
     namespace :v1 do
-      resources :candidates, defaults: { :format => 'json' }
+      resources :candidates, :voters, defaults: { :format => 'json' }
     end
   end
   resources :voters
