@@ -2,19 +2,19 @@ class Api::V1::CandidatesController < ApplicationController
   protect_from_forgery with: :null_session
 
   def index
-    render json: Food.all
+    render json: Candidate.all
   end
 
   def show
-    @food = Food.find(params[:id])
-    render json: @food
+    @candidate = Candidate.find(params[:id])
+    render json: @candidate
   end
 
   def create
-    @food = Food.new(food_params)
+    @candidate = Candidate.new(food_params)
 
-    if @food.save
-      render json: @food
+    if @candidate.save
+      render json: @candidate
     else
       render json: "Invalid parameters"
     end
@@ -22,7 +22,7 @@ class Api::V1::CandidatesController < ApplicationController
 
 
   # Never trust parameters from the scary internet, only allow the white list through.
-  private def food_params
-    params.require(:food).permit(:name, :calories, :course)
+  private def candidate_params
+    params.require(:candidate).permit(:name, :party)
   end
 end

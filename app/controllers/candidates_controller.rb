@@ -22,32 +22,22 @@ class CandidatesController < ApplicationController
   end
 
   # POST /candidates
-  # POST /candidates.json
   def create
     @candidate = Candidate.new(candidate_params)
-
-    respond_to do |format|
-      if @candidate.save
-        format.html { redirect_to @candidate, notice: 'Candidate was successfully created.' }
-        format.json { render :show, status: :created, location: @candidate }
-      else
-        format.html { render :new }
-        format.json { render json: @candidate.errors, status: :unprocessable_entity }
-      end
+    if @candidate.save
+      redirect_to @candidate, notice: 'Candidate was successfully created.' }
+    else
+      render :new
     end
   end
 
+
   # PATCH/PUT /candidates/1
-  # PATCH/PUT /candidates/1.json
   def update
-    respond_to do |format|
-      if @candidate.update(candidate_params)
-        format.html { redirect_to @candidate, notice: 'Candidate was successfully updated.' }
-        format.json { render :show, status: :ok, location: @candidate }
-      else
-        format.html { render :edit }
-        format.json { render json: @candidate.errors, status: :unprocessable_entity }
-      end
+    if @candidate.update(candidate_params)
+      redirect_to @candidate, notice: 'Candidate was successfully updated.'
+    else
+      render :edit
     end
   end
 
